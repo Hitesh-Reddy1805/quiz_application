@@ -65,14 +65,11 @@
     </div>
     
     <script>
-        function toggleSolution(id) {
-            var solution = document.getElementById(id);
-            if (solution.style.display === "none" || solution.style.display === "") {
-                solution.style.display = "block";
-            } else {
-                solution.style.display = "none";
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.MathJax) {
+                MathJax.typesetPromise();
             }
-        }
+        });
     </script>
 </body>
 </html>
