@@ -4,63 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trigonometry Quiz</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff;
+        }
+        .quiz-container {
+            width: 60%;
+            margin: auto;
+        }
+        .question-box {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .solution {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e6f7ff;
+            border-left: 5px solid #007bff;
+        }
+        .view-solution {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="quiz-container">
         <h1>Trigonometry Quiz</h1>
-        <div class="question-list">
-            <div class="question-item" onclick="showQuestion(1)">
-                <p>1. Prove: \((1 - \cos^2 A) \cdot \sec^2 B + \tan^2 B(1 - \sin^2 A) = \sin^2 A + \tan^2 B\)</p>
-            </div>
-            <div class="question-item" onclick="showQuestion(2)">
-                <p>2. If \(3 \tan \theta = \sec \theta\), then find the value of \(\cot \theta\).</p>
-            </div>
-            <div class="question-item" onclick="showQuestion(3)">
-                <p>3. A circus artist is climbing a 20 m long rope, which is tightly stretched and tied from the top of a vertical pole to the ground. Find the height of the pole, if the angle made by the rope with the ground level is \(30^\circ\).</p>
-            </div>
-            <div class="question-item" onclick="showQuestion(4)">
-                <p>4. An aeroplane when flying at a height of 4000 m from the ground passes vertically above another aeroplane at an instant when the angles of elevation of the two planes from the same point on the ground are \(60^\circ\) and \(45^\circ\) respectively. Find the vertical distance between the aeroplanes at that instant.</p>
-            </div>
-        </div>
         
-        <div class="question-display" id="question1">
-            <h2>Question 1</h2>
+        <div class="question-box">
+            <p><b>Question 1:</b></p>
             <p>Prove: \((1 - \cos^2 A) \cdot \sec^2 B + \tan^2 B(1 - \sin^2 A) = \sin^2 A + \tan^2 B\)</p>
-            <button onclick="showSolution(1)">View Solution</button>
-            <div class="solution" id="solution1">
+            <button class="view-solution" onclick="toggleSolution('solution1')">View Solution</button>
+            <div id="solution1" class="solution">
                 <p>Solution: Since \(1 - \cos^2 A = \sin^2 A\) and \(1 - \sin^2 A = \cos^2 A\), substituting these into the equation simplifies both sides to \(\sin^2 A + \tan^2 B\), proving the identity.</p>
             </div>
         </div>
         
-        <div class="question-display" id="question2">
-            <h2>Question 2</h2>
+        <div class="question-box">
+            <p><b>Question 2:</b></p>
             <p>If \(3 \tan \theta = \sec \theta\), then find the value of \(\cot \theta\).</p>
-            <button onclick="showSolution(2)">View Solution</button>
-            <div class="solution" id="solution2">
+            <button class="view-solution" onclick="toggleSolution('solution2')">View Solution</button>
+            <div id="solution2" class="solution">
                 <p>Solution: Dividing both sides by \(\cos \theta\), we get \(3 \sin \theta = 1\), so \(\sin \theta = \frac{1}{3}\) and \(\cos \theta = \sqrt{1 - \sin^2 \theta} = \frac{2\sqrt{2}}{3}\). Thus, \(\tan \theta = \frac{1}{2\sqrt{2}}\) and \(\cot \theta = \frac{2\sqrt{2}}{1} = 2\sqrt{2}\).</p>
             </div>
         </div>
-        
-        <div class="question-display" id="question3">
-            <h2>Question 3</h2>
-            <p>A circus artist is climbing a 20 m long rope, which is tightly stretched and tied from the top of a vertical pole to the ground. Find the height of the pole, if the angle made by the rope with the ground level is \(30^\circ\).</p>
-            <button onclick="showSolution(3)">View Solution</button>
-            <div class="solution" id="solution3">
-                <p>Solution: The height of the pole is given by \(h = 20 \times \sin 30^\circ = 20 \times \frac{1}{2} = 10\) meters.</p>
-            </div>
-        </div>
-        
-        <div class="question-display" id="question4">
-            <h2>Question 4</h2>
-            <p>An aeroplane when flying at a height of 4000 m from the ground passes vertically above another aeroplane at an instant when the angles of elevation of the two planes from the same point on the ground are \(60^\circ\) and \(45^\circ\) respectively. Find the vertical distance between the aeroplanes at that instant.</p>
-            <button onclick="showSolution(4)">View Solution</button>
-            <div class="solution" id="solution4">
-                <p>Solution: Let the height of the lower plane be \(h\). Using \(h = d \tan 45^\circ\), we get \(h = d\). For the higher plane, \(H = d \tan 60^\circ = d\sqrt{3}\). Given \(H = 4000\), solving for \(d\) and substituting, we get the vertical distance \(4000 - \frac{4000}{\sqrt{3}}\).</p>
-            </div>
-        </div>
     </div>
+    
+    <script>
+        function toggleSolution(id) {
+            var solution = document.getElementById(id);
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+            } else {
+                solution.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
 
