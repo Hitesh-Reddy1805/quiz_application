@@ -81,18 +81,47 @@
     <div class="navbar">
         <div class="logo">TrigMaster</div>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Questions</a>
-            <a href="#">About Us</a>
+            <a href="#home">Home</a>
+            <a href="#questions">Questions</a>
+            <a href="#about">About Us</a>
         </div>
     </div>
     
-    <div class="home-container">
+    <div id="home" class="home-container">
         <div class="home-content">
             <h1>Master Trigonometry</h1>
             <p>Learn and test your skills with interactive quizzes and in-depth solutions.</p>
         </div>
     </div>
+    
+    <div id="questions" class="quiz-container">
+        <h2>Trigonometry Quiz</h2>
+        
+        <div class="question-box">
+            <p>Q1: If \( \sin A = \frac{3}{5} \), find \( \cos A \).</p>
+            <button class="view-solution" onclick="window.location.href='solution1.html'">View Solution</button>
+        </div>
+        
+        <div class="question-box">
+            <p>Q2: Given that \( \tan A = \frac{1}{\sqrt{5}} \), what is the value of \( \frac{\csc^2 A - \sec^2 A}
+                {\csc^2 A + \sec^2 A} \)?</p>
+            <button class="view-solution" onclick="window.location.href='solution2.html'">View Solution</button>
+        </div>
+        
+        <div class="question-box">
+            <p>Q3: Find the value of \( \cos 2A \) if \( \sin A = \frac{4}{5} \).</p>
+            <button class="view-solution" onclick="window.location.href='solution3.html'">View Solution</button>
+        </div>
+        
+        <div class="question-box">
+            <p>Q4: Prove that \( 1 + \tan^2 A = \sec^2 A \).</p>
+            <button class="view-solution" onclick="window.location.href='solution4.html'">View Solution</button>
+        </div>
+        
+        <div class="question-box">
+            <p>Q5: Solve for \( \theta \) if \( \sin \theta = \frac{1}{2} \) and \( 0^\circ \leq \theta \leq 360^\circ \).</p>
+            <button class="view-solution" onclick="window.location.href='solution5.html'">View Solution</button>
+        </div>
+    </div>
 </body>
 </html>
-
