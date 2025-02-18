@@ -10,7 +10,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background: url('https://source.unsplash.com/1600x900/?math,abstract') no-repeat center center fixed;
+            background: url('https://source.unsplash.com/1600x900/?mathematics,futuristic') no-repeat center center fixed;
             background-size: cover;
             color: white;
         }
@@ -18,36 +18,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background: rgba(0, 0, 0, 0.9);
-            font-size: 18px;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.8);
         }
-        .navbar a {
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
-            transition: 0.3s;
+            font-size: 18px;
         }
-        .navbar a:hover {
-            color: #00ff99;
-        }
-        .hero {
+        .home-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 90vh;
             text-align: center;
-            background: rgba(0, 0, 0, 0.5);
         }
-        .hero h1 {
-            font-size: 50px;
-            font-weight: bold;
-            text-transform: uppercase;
+        .home-content {
+            max-width: 600px;
         }
         .quiz-container {
             width: 60%;
             margin: 50px auto;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
@@ -59,57 +59,40 @@
             border-radius: 8px;
             box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
         }
+        .solution {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgba(0, 123, 255, 0.2);
+            border-left: 5px solid #007bff;
+        }
         .view-solution {
-            background-color: #00ff99;
-            color: black;
+            background-color: #007bff;
+            color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 8px 12px;
             cursor: pointer;
             border-radius: 5px;
             margin-top: 10px;
-            transition: 0.3s;
-        }
-        .view-solution:hover {
-            background-color: #009966;
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="#">Home</a>
-        <a href="#">Questions</a>
-        <a href="#">About Us</a>
+        <div class="logo">TrigMaster</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Questions</a>
+            <a href="#">About Us</a>
+        </div>
     </div>
     
-    <div class="hero">
-        <div>
+    <div class="home-container">
+        <div class="home-content">
             <h1>Master Trigonometry</h1>
-            <p>Test your knowledge with challenging questions</p>
+            <p>Learn and test your skills with interactive quizzes and in-depth solutions.</p>
         </div>
     </div>
-
-    <div class="quiz-container">
-        <h1>Trigonometry Quiz</h1>
-        
-        <div class="question-box">
-            <p><b>Question 1:</b></p>
-            <p>Prove: \((1 - \cos^2 A) \cdot \sec^2 B + \tan^2 B(1 - \sin^2 A) = \sin^2 A + \tan^2 B\)</p>
-            <button class="view-solution" onclick="toggleSolution('solution1')">View Solution</button>
-            <div id="solution1" class="solution" style="display: none;">
-                <p>Solution: Since \(1 - \cos^2 A = \sin^2 A\) and \(1 - \sin^2 A = \cos^2 A\), substituting these into the equation simplifies both sides to \(\sin^2 A + \tan^2 B\), proving the identity.</p>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        function toggleSolution(id) {
-            var solution = document.getElementById(id);
-            if (solution.style.display === "none" || solution.style.display === "") {
-                solution.style.display = "block";
-            } else {
-                solution.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>
+
