@@ -9,25 +9,43 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f0f8ff;
+            margin: 0;
+            background: url('https://source.unsplash.com/1600x900/?math,technology') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
         }
         .quiz-container {
             width: 60%;
-            margin: auto;
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
         }
         .question-box {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             padding: 15px;
             margin: 10px 0;
             border-radius: 8px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
         }
         .solution {
             display: none;
             margin-top: 10px;
             padding: 10px;
-            background-color: #e6f7ff;
+            background-color: rgba(0, 123, 255, 0.2);
             border-left: 5px solid #007bff;
         }
         .view-solution {
@@ -42,6 +60,12 @@
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Questions</a>
+        <a href="#">About Us</a>
+    </div>
+    
     <div class="quiz-container">
         <h1>Trigonometry Quiz</h1>
         
@@ -65,13 +89,14 @@
     </div>
     
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            if (window.MathJax) {
-                MathJax.typesetPromise();
+        function toggleSolution(id) {
+            var solution = document.getElementById(id);
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+            } else {
+                solution.style.display = "none";
             }
-        });
+        }
     </script>
 </body>
 </html>
-
-
