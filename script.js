@@ -62,3 +62,19 @@ function checkAnswer(selected, correct) {
 nextButton.addEventListener("click", loadQuestion);
 
 loadQuestion();
+
+document.addEventListener("DOMContentLoaded", function () {
+    const summarySection = document.getElementById("trigonometry-summary");
+
+    function showSummary() {
+        const sectionPos = summarySection.getBoundingClientRect().top;
+        const screenPos = window.innerHeight / 1.2;
+
+        if (sectionPos < screenPos) {
+            summarySection.style.opacity = "1";
+            summarySection.style.transform = "translateY(0)";
+        }
+    }
+
+    window.addEventListener("scroll", showSummary);
+})
