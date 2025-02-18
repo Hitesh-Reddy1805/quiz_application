@@ -1,58 +1,110 @@
+/* General Styling */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
     margin: 0;
-    background: url('background.jpg') no-repeat center center fixed;
+    background-image: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
     color: white;
+    overflow-x: hidden;
 }
 
-
-.quiz-container {
-    width: 50%;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.8);
 }
 
-.btn-container {
-    margin: 10px 0;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-button {
-    background-color: #007BFF;
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
     color: white;
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-.question-box {
-    background: white;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
-    text-align: left;
+/* Animated Introduction Section */
+.intro-container {
+    text-align: center;
+    margin-top: 50px;
+    animation: fadeIn 2s ease-in-out;
 }
 
-/* Fade-in and Slide-up Animation */
-@keyframes fadeSlideUp {
+.intro-container h1 {
+    font-size: 3em;
+    animation: slideIn 2s ease-in-out;
+}
+
+.intro-container p {
+    font-size: 1.2em;
+    animation: fadeInText 3s ease-in-out;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(30px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Solution Page Styling */
+.solution-container {
+    width: 60%;
+    margin: 50px auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+}
+
+.solution-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
+    display: none;
+}
+
+.view-solution {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
 }

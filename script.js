@@ -1,80 +1,31 @@
-const questions = [
-    { question: "sin²θ + cos²θ = ?", answers: ["0", "1", "sinθ", "cosθ"], correct: "1" },
-    { question: "1 + tan²θ = ?", answers: ["sin²θ", "sec²θ", "cos²θ", "cosec²θ"], correct: "sec²θ" },
-    { question: "1 + cot²θ = ?", answers: ["tan²θ", "sin²θ", "cosec²θ", "sec²θ"], correct: "cosec²θ" },
-    { question: "sin(2θ) = ?", answers: ["2sinθcosθ", "sin²θ - cos²θ", "tanθ", "cos²θ - sin²θ"], correct: "2sinθcosθ" },
-    { question: "cos(2θ) = ?", answers: ["cos²θ - sin²θ", "2sinθcosθ", "tanθ", "sec²θ"], correct: "cos²θ - sin²θ" },
-    { question: "tan(2θ) = ?", answers: ["2tanθ / (1 - tan²θ)", "tanθ", "sinθ/cosθ", "sec²θ"], correct: "2tanθ / (1 - tan²θ)" },
-    { question: "sin(A + B) = ?", answers: ["sinA + sinB", "sinAcosB + cosAsinB", "tanA + tanB", "cosA + cosB"], correct: "sinAcosB + cosAsinB" },
-    { question: "cos(A + B) = ?", answers: ["cosAcosB - sinAsinB", "cosA + cosB", "tanA + tanB", "sinAcosB + cosAsinB"], correct: "cosAcosB - sinAsinB" },
-    { question: "tan(A + B) = ?", answers: ["(tanA + tanB) / (1 - tanA tanB)", "tanA - tanB", "sinA + sinB", "cosA - cosB"], correct: "(tanA + tanB) / (1 - tanA tanB)" },
-    { question: "cot(A + B) = ?", answers: ["(cotA cotB - 1) / (cotB + cotA)", "cotA + cotB", "sinA + sinB", "cosA + cosB"], correct: "(cotA cotB - 1) / (cotB + cotA)" }
-];
+// Function to show solutions dynamically
+function showSolution(id) {
+    document.querySelectorAll('.solution-box').forEach(box => box.style.display = 'none');
+    document.getElementById('solution-' + id).style.display = 'block';
+}
 
-let currentQuestionIndex = 0;
-let score = 0;
+// Adding a smooth scroll effect for navigation
+document.addEventListener("DOMContentLoaded", function() {
+    const navLinks = document.querySelectorAll(".nav-links a");
 
-const questionElement = document.getElementById("question");
-const answerButtons = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next-btn");
-const scoreElement = document.getElementById("score");
-const resultElement = document.getElementById("result");
+    navLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
 
-function loadQuestion() {
-    resetState();
-    let currentQuestion = questions[currentQuestionIndex];
-    questionElement.innerText = currentQuestion.question;
-
-    currentQuestion.answers.forEach(answer => {
-        const button = document.createElement("button");
-        button.innerText = answer;
-        button.classList.add("btn");
-        button.addEventListener("click", () => checkAnswer(answer, currentQuestion.correct));
-        answerButtons.appendChild(button);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50,
+                    behavior: "smooth"
+                });
+            }
+        });
     });
-}
+});
 
-function resetState() {
-    answerButtons.innerHTML = "";
-    resultElement.innerText = "";
-    nextButton.style.display = "none";
-}
-
-function checkAnswer(selected, correct) {
-    if (selected === correct) {
-        score++;
-        resultElement.innerText = "Correct! ✅";
-    } else {
-        resultElement.innerText = `Wrong ❌ The correct answer is: ${correct}`;
-    }
-    scoreElement.innerText = `Score: ${score}`;
-    currentQuestionIndex++;
-
-    if (currentQuestionIndex < questions.length) {
-        nextButton.style.display = "block";
-    } else {
-        questionElement.innerText = "Quiz Completed!";
-        answerButtons.innerHTML = "";
-        nextButton.style.display = "none";
-    }
-}
-
-nextButton.addEventListener("click", loadQuestion);
-
-loadQuestion();
-
-document.addEventListener("DOMContentLoaded", function () {
-    const summarySection = document.getElementById("trigonometry-summary");
-
-    function showSummary() {
-        const sectionPos = summarySection.getBoundingClientRect().top;
-        const screenPos = window.innerHeight / 1.2;
-
-        if (sectionPos < screenPos) {
-            summarySection.style.opacity = "1";
-            summarySection.style.transform = "translateY(0)";
-        }
-    }
-
-    window.addEventListener("scroll", showSummary);
-})
+// Floating Animation for Homepage Introduction
+document.addEventListener("DOMContentLoaded", function() {
+    let introText = document.querySelector(".intro-container h1");
+    introText.style.animation = "slideIn 2s ease-in-out";
+});
